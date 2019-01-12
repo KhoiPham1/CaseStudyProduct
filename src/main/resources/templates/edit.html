@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+</head>
+<body>
+<a href="/products">Back list</a>
+<p th:if="${mess}">
+    <span th:text="${mess}"></span>
+</p>
+<form th:object="${products}" action="/edit-product" method="post">
+
+    <fieldset>
+        <legend><h1>Update Product</h1></legend>
+        <table>
+            <input type="hidden" th:field="*{id}">
+            <tr>
+                <th><h2>Code</h2></th>
+                <td><input type="text" th:field="*{code}"></td>
+            </tr>
+            <tr>
+                <th><h2>name</h2></th>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <th><h2>price</h2></th>
+                <td><input type="text" th:field="*{price}"></td>
+            </tr>
+            <tr>
+                <th><h2>description</h2></th>
+                <td><input type="text" th:field="*{description}"></td>
+            </tr>
+            <tr>
+                <th><h2>quantity</h2></th>
+                <td><input type="text" th:field="*{quantity}"></td>
+            </tr>
+            <tr>
+                <th><h2>Company</h2></th>
+                <td><select th:field="*{company}">
+                    <option th:each="pro:${company}" th:text="${pro.name}" th:value="${pro.id}"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Update"></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>
